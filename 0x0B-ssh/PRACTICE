@@ -1,0 +1,13 @@
+SSH -> protocol -> Encryption
+----->host - server
+create id
+public - private
+public --------> server
+host  ssh---(private)---> server
+---------------------------------------
+
+ssh-keygen -t rsa -b 4096 -f school
+    ->school  ->school.pub
+ssh-copy-id -i shcool.pub ubuntu@52.91.119.108
+ssh -i school ubuntu@52.91.119.108
+---------------------------------------
