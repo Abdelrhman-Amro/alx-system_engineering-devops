@@ -6,7 +6,7 @@ public --------> server
 host  ssh---(private)---> server
 ---------------------------------------
 
-ssh-keygen -t rsa -b 4096 -f school
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/school
     ->school  ->school.pub
 ssh-copy-id -i shcool.pub ubuntu@52.91.119.108
 ssh -i school ubuntu@52.91.119.108
