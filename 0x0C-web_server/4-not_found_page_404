@@ -6,10 +6,10 @@ echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
 # Creat file in root
-echo "Ceci n'est pas une page" > /var/www/html/My404File
+echo "Ceci n'est pas une page" > /var/www/html/My404File.html
 
 # Configure the direction of 404
-sed -i '/root /var/www/html;/a error_page 404 /My404File;' /etc/nginx/sites-available/default
+sed -i '/root \/var\/www\/html;/a error_page 404 /My404File.html;' /etc/nginx/sites-available/default
 
 # Start web server
-sudo service nginx start
+sudo service nginx restart
