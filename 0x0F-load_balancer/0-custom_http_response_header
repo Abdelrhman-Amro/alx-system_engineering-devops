@@ -10,6 +10,6 @@ sed -i '/listen 80 default_server;/a rewrite ^/redirect_me https://www.youtube.c
 echo "Ceci n'est pas une page" > /var/www/html/My404File.html
 sed -i '/root \/var\/www\/html;/a error_page 404 /My404File.html;' /etc/nginx/sites-available/default
 
-sed -i '/listen 80 default_server;/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
+sed -i '/listen 80 default_server;/a add_header X-Served-By \$HOSTNAME;' /etc/nginx/sites-available/default
 
-sudo service nginx start
+sudo service nginx restart
