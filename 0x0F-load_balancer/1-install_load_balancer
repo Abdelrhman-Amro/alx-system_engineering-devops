@@ -27,8 +27,8 @@ frontend FronFron
 
 backend BackBack
     balance roundrobin
-    server web-01 52.91.119.108:80
-    server web-02 100.25.138.20:80
+    server web-01 381246-web-01:80
+    server web-02 381246-web-02:80
 " > /etc/haproxy/haproxy.cfg
 
 # restart the service
