@@ -1,28 +1,20 @@
 #!/usr/bin/env bash
 # Install and configure HAproxy
 
-# Install
-    # Update the sys
-    sudo apt-get update
+# Update the sys
+sudo apt-get -y update
 
-    # You need to enable a dedicated PPA with the following command:
-    sudo apt-get install --no-install-recommends software-properties-common
-    sudo add-apt-repository ppa:vbernat/haproxy-2.9
+# Install haproxy
+sudo apt-get -y install haproxy
 
-    # Update the sys
-    sudo apt-get update
+# Start the service
+sudo service haproxy start
 
-    # Install
-    sudo apt-get install haproxy=2.9.\*
-############################################
-# Complete
 printf %s\
 "\
-defaults
-    mode http
-
 frontend FronFron
     bind *:80
+    mode http
     default_backend BackBack
 
 backend BackBack
