@@ -1,17 +1,7 @@
 #!/usr/bin/env bash
 # Install and configure HAproxy
 
-# Update the sys
-sudo apt-get -y update
-
-# Install haproxy
-sudo apt-get -y install haproxy
-
-# Start the service
-sudo service haproxy start
-
-printf %s\
-"\
+balancer="\
 frontend FronFron
     bind *:80
     mode http
@@ -21,7 +11,19 @@ backend BackBack
     balance roundrobin
     server 381246-web-01 52.91.119.108:80 check
     server 381246-web-02 100.25.138.20:80 check
-" > /etc/haproxy/haproxy.cfg
+"
+
+# Update the sys
+sudo apt-get -y update
+
+# Install haproxy
+sudo apt-get -y install haproxy
+
+# Start the service
+sudo service haproxy start
+
+cp -a /etc/haproxy/haproxy.cfg{,.orig}
+echo "$balancer" >> /etc/haproxy/haproxy.cfg
 
 # restart the service
 sudo service haproxy restart
